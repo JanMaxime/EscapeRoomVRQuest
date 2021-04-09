@@ -1,18 +1,37 @@
-using System.Collections;
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MainPlayerController : MonoBehaviour
-{
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+public class MainPlayerController : MonoBehaviour {
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+	protected List<Type> list_of_player_upgrades = new List<Type>();
+
+	public void acquire_item ( CollectibleItem item ) {
+		// Check that the upgrade is not already acquired
+		if ( is_equiped_with( item.GetType() ) ) return;
+
+		// Add the upgrade in the list of upgrade collected
+		list_of_player_upgrades.Add( item.GetType() );
+		Debug.LogWarning("Add upgrade");
+	}
+
+	public bool is_equiped_with ( Type type ) {
+		// Check that one element is the right type
+		for ( int i = 0; i < list_of_player_upgrades.Count; i++ ) if ( type == list_of_player_upgrades[i] ) return true;
+		return false;
+	}
+
+
+	void OnTriggerEnter ( Collider other ) {
+
+		// Retreive the object to be collected if it exits
+		InteractiveItem interactive_item = other.GetComponent<InteractiveItem>();
+		Debug.LogWarning("TRIGGER");
+		if ( interactive_item == null ) return;
+		Debug.LogWarning("NON NUZLL");
+
+		// Forward the current player to the object to be collected
+		interactive_item.interacted_with( this );
+
+	}
 }

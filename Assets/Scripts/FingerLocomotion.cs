@@ -24,7 +24,7 @@ public class FingerLocomotion : MonoBehaviour {
     private float lastRightHandPos;
     private float lastHandsDistance;
 	void Update () {
-        if(leftHand.GetFingerIsPinching(HandFinger.Index) && rightHand.GetFingerIsPinching(HandFinger.Index) ){
+        if(leftHand.GetFingerIsPinching(HandFinger.Pinky) && rightHand.GetFingerIsPinching(HandFinger.Pinky) ){
                     if (movement_started){
                     float diffenreces_of_distances = Mathf.Abs(lastHandsDistance - Mathf.Abs(leftHand.transform.position.y - rightHand.transform.position.y));
                     character_controller.SimpleMove(character_controller.transform.forward * speed * diffenreces_of_distances);
