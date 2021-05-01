@@ -26,9 +26,7 @@ public class MainPlayerController : MonoBehaviour {
 
 		// Retreive the object to be collected if it exits
 		InteractiveItem interactive_item = other.GetComponent<InteractiveItem>();
-		Debug.LogWarning("TRIGGER");
 		if ( interactive_item == null ) return;
-		Debug.LogWarning("NON NUZLL");
 
 		// Forward the current player to the object to be collected
 		interactive_item.interacted_with( this );

@@ -11,11 +11,15 @@ public class ObjectAnchor : MonoBehaviour {
 		initial_transform_parent = transform.parent;
 	}
 
+	public void setInitialParent(Transform transform){
+		initial_transform_parent = transform;
+	}
+
 
 	// Store the hand controller this object will be attached to
-	protected FingerController hand_controller = null;
+	protected HandController hand_controller = null;
 
-	public void attach_to ( FingerController hand_controller ) {
+	public void attach_to ( HandController hand_controller ) {
 		// Store the hand controller in memory
 		this.hand_controller = hand_controller;
 
@@ -23,7 +27,7 @@ public class ObjectAnchor : MonoBehaviour {
 		transform.SetParent( hand_controller.transform );
 	}
 
-	public void detach_from ( FingerController hand_controller ) {
+	public void detach_from ( HandController hand_controller ) {
 		// Make sure that the right hand controller ask for the release
 		if ( this.hand_controller != hand_controller ) return;
 
@@ -32,6 +36,11 @@ public class ObjectAnchor : MonoBehaviour {
 
 		// Set the object to be placed in the original transform parent
 		transform.SetParent( initial_transform_parent );
+
+	}
+
+	public void detach(){
+		transform.parent = null;
 	}
 
 	public bool is_available () { return hand_controller == null; }
