@@ -113,6 +113,7 @@ public class HandController : MonoBehaviour {
 
 				// Compute the distance to the object
 				oject_distance = Vector3.Distance( this.transform.position, anchors_in_the_scene[i].transform.position );
+                Debug.LogWarning(oject_distance);
 
 				// Keep in memory the closest object
 				// N.B. We can extend this selection using priorities
@@ -131,15 +132,6 @@ public class HandController : MonoBehaviour {
 
 				// Grab this object
 				object_grasped.attach_to( this );
-
-                //Get the object Rigidbody
-                Rigidbody rigidbody = object_grasped.GetComponent<Rigidbody>();
-
-                //If there is a RigidBody, then desactivate its physics properties so that it doesn't follow gravity anymore.
-                if(rigidbody){
-                    rigidbody.isKinematic = true;
-                    rigidbody.useGravity = false;
-                }
 			}
 		//==============================================//
 		// Define the behavior when the hand get opened //
@@ -148,24 +140,7 @@ public class HandController : MonoBehaviour {
 
 			// Release the object
 			object_grasped.detach_from( this );
-
-        
-            //Get the object Rigidbody
-            Rigidbody rigidbody = object_grasped.GetComponent<Rigidbody>();
-
-            //If there is a RigidBody, then activate its physics properties so that it can fall
-            //Also gives the hand's velocity to the object so that it can be throw
-            if(rigidbody){
-                rigidbody.isKinematic = false;
-                rigidbody.useGravity = true;
-                if(handType == HandType.LeftHand){
-                    rigidbody.velocity = OVRInput.GetLocalControllerVelocity(OVRInput.Controller.LTouch);
-                }
-                else{
-                    rigidbody.velocity = OVRInput.GetLocalControllerVelocity(OVRInput.Controller.RTouch);
-                }
-
-            }
+            object_grasped = null;
 		}
 
 	}

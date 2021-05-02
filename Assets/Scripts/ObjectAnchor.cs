@@ -15,22 +15,52 @@ public class ObjectAnchor : MonoBehaviour {
 		initial_transform_parent = transform;
 	}
 
+	protected void disable_rigidbody(GameObject gameObject){
+		//Get the object Rigidbody
+		Rigidbody rigidbody = gameObject.GetComponent<Rigidbody>();
+
+		//If there is a RigidBody, then desactivate its physics properties so that it doesn't follow gravity anymore.
+		if(rigidbody){
+			rigidbody.isKinematic = true;
+			rigidbody.useGravity = false;
+		}
+	}
+
+	protected void activate_rigidbody(GameObject gameObject){
+		//Get the object Rigidbody
+		Rigidbody rigidbody = gameObject.GetComponent<Rigidbody>();
+		//If there is a RigidBody, then activate gravity and disable kinematics so that it falls again.
+		if(rigidbody){
+			rigidbody.isKinematic = false;
+			rigidbody.useGravity = true;
+			if(hand_controller.handType == HandController.HandType.LeftHand){
+                    rigidbody.velocity = OVRInput.GetLocalControllerVelocity(OVRInput.Controller.LTouch);
+                }
+            else{
+                rigidbody.velocity = OVRInput.GetLocalControllerVelocity(OVRInput.Controller.RTouch);
+            }
+		}
+	}
+
 
 	// Store the hand controller this object will be attached to
 	protected HandController hand_controller = null;
 
-	public void attach_to ( HandController hand_controller ) {
+	public virtual void attach_to ( HandController hand_controller ) {
 		// Store the hand controller in memory
 		this.hand_controller = hand_controller;
 
 		// Set the object to be placed in the hand controller referential
 		transform.SetParent( hand_controller.transform );
+
+		disable_rigidbody(this.gameObject);
 	}
 
-	public void detach_from ( HandController hand_controller ) {
+	public virtual void detach_from ( HandController hand_controller ) {
 		// Make sure that the right hand controller ask for the release
 		if ( this.hand_controller != hand_controller ) return;
 
+		activate_rigidbody(this.gameObject);
 		// Detach the hand controller
 		this.hand_controller = null;
 
