@@ -7,17 +7,46 @@ public class HittableBox : MonoBehaviour
 
     public AudioSource hit_sound;
     public AudioSource destroy_sound;
-    public float life = 3f;
+    public float total_life = 200f;
 
-    public void hit(Sword sword, Vector3 velocity){
-        life -= sword.damage;
-        if(life <= 0f){
-            Destroy(this.gameObject);
-            destroy_sound.Play();
+    public Material material;
+
+    private Material material_instantiated;
+    private float current_life;
+
+    void Start(){
+        current_life = total_life;
+        material_instantiated = Instantiate(material);
+
+    }
+
+
+    public void hit(float velocity_magnitude, bool right){
+        if(current_life<0){}
+        material_instantiated.SetColor("_Color", material_instantiated.GetColor("_Color") - new Color(1f/total_life*velocity_magnitude,1f/total_life*velocity_magnitude,1f/total_life*velocity_magnitude, 0));
+        foreach (Renderer renderer in this.GetComponentsInChildren<Renderer>()){
+            renderer.material.SetColor("_Color", material_instantiated.GetColor("_Color"));
         }
+        current_life -= velocity_magnitude;
+        if(current_life <= 0f){
+            destroy_sound.Play();
+            StartCoroutine(VibrationManager.vibrate(right, 0.3f, Mathf.Max(1f, velocity_magnitude/40f)));
+            GetComponent<Rigidbody>().constraints = RigidbodyConstraints.None;
+            foreach (Transform child in transform){
+                child.gameObject.AddComponent<Rigidbody>();
+                child.GetComponent<Rigidbody>().AddExplosionForce(50, child.position, 2);
+            }
+            
+        }   
         else{
+            StartCoroutine(VibrationManager.vibrate(right, 0.1f, Mathf.Max(1f, velocity_magnitude/40f)));
             hit_sound.Play();
-            this.gameObject.GetComponent<Rigidbody>().velocity = velocity * 3f;
         }
     }
+
+    void Update(){
+
+    }
 }
+
+

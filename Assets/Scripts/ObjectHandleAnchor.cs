@@ -12,9 +12,10 @@ public class ObjectHandleAnchor : ObjectAnchor
 
     protected Transform anchored_object_parent;
 
+
     void Start () {
 		initial_transform_parent = transform.parent;
-        anchored_object_parent = anchored_object.transform.parent;
+        anchored_object_parent = anchored_object .transform.parent;
 	}
 
 
@@ -24,12 +25,13 @@ public class ObjectHandleAnchor : ObjectAnchor
         anchored_object.transform.SetParent(hand_controller.transform);
 
         //THIS NEEDS TO BE CORRECTED
+        /*
         if(hand_controller.handType == HandController.HandType.RightHand){
             anchored_object.transform.rotation = trackingSpace.rotation * OVRInput.GetLocalControllerRotation(OVRInput.Controller.RTouch);
         }
         else{
             anchored_object.transform.rotation = trackingSpace.rotation * OVRInput.GetLocalControllerRotation(OVRInput.Controller.LHand);
-        }
+        }*/
 
         disable_rigidbody(anchored_object);
 

@@ -113,7 +113,6 @@ public class HandController : MonoBehaviour {
 
 				// Compute the distance to the object
 				oject_distance = Vector3.Distance( this.transform.position, anchors_in_the_scene[i].transform.position );
-                Debug.LogWarning(oject_distance);
 
 				// Keep in memory the closest object
 				// N.B. We can extend this selection using priorities
@@ -176,7 +175,7 @@ public class HandController : MonoBehaviour {
                 rigidbody.isKinematic = false;
                 //From local coord to world coor.
                 rigidbody.velocity = trackingSpace.rotation* OVRInput.GetLocalControllerVelocity(OVRInput.Controller.RTouch);
-                rigidbody.angularVelocity = OVRInput.GetLocalControllerAngularVelocity(OVRInput.Controller.RTouch);
+                //rigidbody.angularVelocity = OVRInput.GetLocalControllerAngularVelocity(OVRInput.Controller.RTouch);
                 sphere_thrown = true;
             }
 
