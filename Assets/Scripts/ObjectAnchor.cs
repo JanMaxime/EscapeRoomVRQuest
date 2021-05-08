@@ -44,7 +44,7 @@ public class ObjectAnchor : MonoBehaviour {
 
 
 	// Store the hand controller this object will be attached to
-	protected HandController hand_controller = null;
+	public HandController hand_controller = null;
 
 	public virtual void attach_to ( HandController hand_controller ) {
 		// Store the hand controller in memory
