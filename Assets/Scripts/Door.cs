@@ -32,9 +32,12 @@ public class Door : MonoBehaviour
         if (hand_controller == null) return;
 
         last_position_of_hand = hand_controller.transform.position;
+        bool right = (hand_controller.handType == HandController.HandType.RightHand);
         if (can_be_opened)
         {
             //sound.Play();
+            //StartCoroutine(sound.Play());
+            StartCoroutine(VibrationManager.vibrate(right, 0.1f, 1f));
         }
     }
 
@@ -53,14 +56,14 @@ public class Door : MonoBehaviour
 
             if (relativePosition.x > 0)
             {
-                Debug.LogWarning("Close Door!!");
+                //Debug.LogWarning("Close Door!!");
                 to_update = Mathf.Min(100f-avaliable_degree_to_open, 1f * diff);
                 avaliable_degree_to_open = avaliable_degree_to_open + to_update;
                 to_update = to_update * -1f;
             }
             else
             {
-                Debug.LogWarning("Open Door!!");
+                //Debug.LogWarning("Open Door!!");
                 to_update = Mathf.Min(avaliable_degree_to_open, 1f * diff);
                 avaliable_degree_to_open = avaliable_degree_to_open - to_update;
             }
