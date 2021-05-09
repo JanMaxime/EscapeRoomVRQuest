@@ -48,7 +48,7 @@ public class LightSwitch : ObjectAnchor
                 //try to turn off
                 if(diff < 0)
                 {
-                    to_update = Mathf.Min(70f - avaliable_rotation_to_on, Mathf.Abs(10f * diff));
+                    to_update = Mathf.Min(70f - avaliable_rotation_to_on, Mathf.Abs(5f * diff));
                     avaliable_rotation_to_on = avaliable_rotation_to_on + to_update;
                     to_update = to_update * -1f;
                     if(avaliable_rotation_to_on == 70f)
@@ -59,7 +59,7 @@ public class LightSwitch : ObjectAnchor
                 }
                 else
                 {
-                    to_update = Mathf.Min(avaliable_rotation_to_on, 10f * diff);
+                    to_update = Mathf.Min(avaliable_rotation_to_on, 5f * diff);
                     avaliable_rotation_to_on = avaliable_rotation_to_on - to_update;
                     if (avaliable_rotation_to_on == 0f)
                     {
