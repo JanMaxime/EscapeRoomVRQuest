@@ -30,7 +30,7 @@ public class HittableBox : MonoBehaviour
         current_life -= velocity_magnitude;
         if(current_life <= 0f){
             destroy_sound.Play();
-            StartCoroutine(VibrationManager.vibrate(right, 0.3f, Mathf.Max(1f, velocity_magnitude/40f)));
+            StartCoroutine(VibrationManager.vibrate(right, 0.3f, 1, Mathf.Min(1f, velocity_magnitude/40f)));
             GetComponent<Rigidbody>().constraints = RigidbodyConstraints.None;
             foreach (Transform child in transform){
                 child.gameObject.AddComponent<Rigidbody>();
@@ -39,7 +39,7 @@ public class HittableBox : MonoBehaviour
             
         }   
         else{
-            StartCoroutine(VibrationManager.vibrate(right, 0.1f, Mathf.Max(1f, velocity_magnitude/40f)));
+            StartCoroutine(VibrationManager.vibrate(right, 0.1f, 1, Mathf.Min(1f, velocity_magnitude/40f)));
             hit_sound.Play();
         }
     }
