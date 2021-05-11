@@ -21,7 +21,7 @@ public class PWButton : MonoBehaviour
         if (hand_controller == null) return;
 
         bool right = (hand_controller.handType == HandController.HandType.RightHand);
-        StartCoroutine(VibrationManager.vibrate(right, 0.1f, 1f));
+        StartCoroutine(VibrationManager.vibrate(right, 0.1f, 1f, 1f));
 
         //Debug.LogWarning(button_text);
 
