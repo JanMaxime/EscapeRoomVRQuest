@@ -37,7 +37,7 @@ public class Door : MonoBehaviour
         {
             //sound.Play();
             //StartCoroutine(sound.Play());
-            StartCoroutine(VibrationManager.vibrate(right, 0.1f, 1f));
+            StartCoroutine(VibrationManager.vibrate(right, 0.1f, 1f, 1f));
         }
     }
 

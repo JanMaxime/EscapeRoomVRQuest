@@ -20,7 +20,7 @@ public class ObjectHandleAnchor : ObjectAnchor
 
 
     public override void attach_to ( HandController hand_controller ) {
-        //base.attach_to(hand_controller);
+
         this.hand_controller = hand_controller;
         anchored_object.transform.SetParent(hand_controller.transform);
 
@@ -38,9 +38,8 @@ public class ObjectHandleAnchor : ObjectAnchor
     }
 
         public override void detach_from ( HandController hand_controller ) {
-        anchored_object.transform.SetParent(anchored_object_parent);
-        activate_rigidbody(anchored_object);
-        this.hand_controller = null;
-        //base.detach_from(hand_controller);
+            anchored_object.transform.SetParent(anchored_object_parent);
+            activate_rigidbody(anchored_object);
+            this.hand_controller = null;
 	}
 }
