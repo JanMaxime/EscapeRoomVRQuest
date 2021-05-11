@@ -174,8 +174,8 @@ public class HandController : MonoBehaviour {
                 rigidbody.useGravity = true;
                 rigidbody.isKinematic = false;
                 //From local coord to world coor.
-                rigidbody.velocity = trackingSpace.rotation* OVRInput.GetLocalControllerVelocity(OVRInput.Controller.RTouch);
-                //rigidbody.angularVelocity = OVRInput.GetLocalControllerAngularVelocity(OVRInput.Controller.RTouch);
+                rigidbody.velocity = trackingSpace.rotation* OVRInput.GetLocalControllerVelocity(OVRInput.Controller.RTouch) * 1.5f;
+                teleportation_sphere_instantiated.transform.eulerAngles = new Vector3(0,teleportation_sphere_instantiated.transform.eulerAngles.y, 0);
                 sphere_thrown = true;
             }
 
