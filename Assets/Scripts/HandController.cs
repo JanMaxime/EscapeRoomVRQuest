@@ -52,7 +52,7 @@ public class HandController : MonoBehaviour {
 
     protected bool is_tp_sphere_button_pushed(){
         if ( handType == HandType.RightHand ){
-            return OVRInput.Get(OVRInput.Button.One);
+            return OVRInput.Get(OVRInput.RawButton.A);
         }
         else{
             return false;
@@ -61,11 +61,11 @@ public class HandController : MonoBehaviour {
     }
 
     protected bool is_tp_activated_button_pushed(){
-        return OVRInput.Get(OVRInput.Button.Three);
+        return OVRInput.GetDown(OVRInput.RawButton.Y);
     }
 
     protected bool is_tp_canceled_button_pushed(){
-        return OVRInput.Get(OVRInput.Button.Four);
+        return OVRInput.GetDown(OVRInput.RawButton.B);
     }
 
 
