@@ -61,7 +61,7 @@ public class HandController : MonoBehaviour {
     }
 
     protected bool is_tp_activated_button_pushed(){
-        return OVRInput.GetDown(OVRInput.RawButton.Y);
+        return OVRInput.GetDown(OVRInput.RawButton.X);
     }
 
     protected bool is_tp_canceled_button_pushed(){

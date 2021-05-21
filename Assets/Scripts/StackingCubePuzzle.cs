@@ -18,7 +18,6 @@ public class StackingCubePuzzle : MonoBehaviour
         Debug.Log(cubes.Length);
         bool solved = true;
         foreach(StackingCube cube in cubes){
-            Debug.LogWarning("o");
             if(!cube.getIsStacked()){
                 Debug.Log(cube.name);
                 solved = false;
@@ -26,7 +25,6 @@ public class StackingCubePuzzle : MonoBehaviour
             }
         }
         if(solved){
-            Debug.LogWarning("SOLVED");
             alreadySolved = true;
             solvedSound.Play();
         }

@@ -21,8 +21,6 @@ public class GunGrabber : MonoBehaviour
     void Start()
     {
         parent_transform = this.GetComponentInParent<Transform>();
-
-        
     }
 
     private bool is_trigger_pressed(){
@@ -61,11 +59,11 @@ public class GunGrabber : MonoBehaviour
                 if(hit.rigidbody && hit.rigidbody.tag == "LaserGrabbable"){
                     OVRInput.Controller controller = handController.handType == HandController.HandType.RightHand ? OVRInput.Controller.RTouch :  OVRInput.Controller.LTouch;
                     float lateralSpeed = - (handController.trackingSpace.rotation* OVRInput.GetLocalControllerAngularVelocity(controller) * 2f).y;
-                    hit.rigidbody.velocity = new Vector3(lateralSpeed, 0.5f, 0);
-                    StartCoroutine(VibrationManager.vibrate(handController.handType == HandController.HandType.RightHand, 0.1f, 0.7f, 0.7f));
+                    hit.rigidbody.velocity = new Vector3(lateralSpeed, 0.75f, 0);
+                    StartCoroutine(VibrationManager.vibrate(handController.handType == HandController.HandType.RightHand, 0.05f, 0.9f, 0.9f));
                 }
                 else{
-                    StartCoroutine(VibrationManager.vibrate(handController.handType == HandController.HandType.RightHand, 0.1f, 0.2f, 0.2f));
+                    StartCoroutine(VibrationManager.vibrate(handController.handType == HandController.HandType.RightHand, 0.05f, 0.15f, 0.15f));
                 }
             }
         }

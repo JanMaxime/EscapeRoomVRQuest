@@ -28,7 +28,7 @@ public class Notepad : MonoBehaviour
 
     private bool openClose()
     {
-        return OVRInput.GetDown(OVRInput.RawButton.X);
+        return OVRInput.GetDown(OVRInput.RawButton.Y);
     }
 
 
