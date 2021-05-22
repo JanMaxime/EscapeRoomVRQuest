@@ -10,13 +10,13 @@ public class Key : ObjectAnchor
 
     public ContainerBeHacked related_container;
     protected bool can_be_grabbed = false;
-    protected Rigidbody rigidbody;
+    //protected Rigidbody rigidbody;
 
     void Start()
     {
         box_collider = gameObject.GetComponent<Collider>();
         box_collider.isTrigger = false;
-        rigidbody = gameObject.GetComponent<Rigidbody>();
+        //rigidbody = gameObject.GetComponent<Rigidbody>();
     }
 
     void Update()
@@ -32,7 +32,11 @@ public class Key : ObjectAnchor
         if (related_container.isHacked())
         {
             can_be_grabbed = true;
-            rigidbody.useGravity = true;
+            Rigidbody rigidbody = gameObject.GetComponent<Rigidbody>();
+            if (rigidbody)
+            {
+                rigidbody.isKinematic = false; //If isKinematic is enabled, Forces, collisions or joints will not affect the rigidbody anymore.
+            }
         }
     }
 
