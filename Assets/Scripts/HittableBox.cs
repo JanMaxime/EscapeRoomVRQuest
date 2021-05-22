@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class HittableBox : MonoBehaviour
+public class HittableBox : ContainerBeHacked
 {
 
     public AudioSource hit_sound;
@@ -46,6 +46,11 @@ public class HittableBox : MonoBehaviour
 
     void Update(){
 
+    }
+
+    public override bool isHacked() // only if the cube is hacked (broke) the key inside becomes avaliable
+    {
+        return current_life <= 0.0f;
     }
 }
 
