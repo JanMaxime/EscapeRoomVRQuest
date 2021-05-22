@@ -7,6 +7,8 @@ public class StackingCubePuzzle : MonoBehaviour
 	private StackingCube[] cubes;
     public AudioSource solvedSound;
 
+    public GameObject lightsaber;
+
     static bool alreadySolved = false;
 
     void Start(){
@@ -27,6 +29,7 @@ public class StackingCubePuzzle : MonoBehaviour
         if(solved){
             alreadySolved = true;
             solvedSound.Play();
+            lightsaber.gameObject.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.None;
         }
     }
 }

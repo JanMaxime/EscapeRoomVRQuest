@@ -12,12 +12,21 @@ public class Container : MonoBehaviour
 
     public Transform weights_initial_parent;
 
+    public Color incomplete_color;
+    public Color complete_color;
+
     void Start(){
         updateText();
     }
 
     void updateText(){
         text.text = currentWeights + "/" + totalWeights + " ton";
+        if(isFull()){
+            text.color = complete_color;
+        }
+        else{
+            text.color = incomplete_color;
+        }
     }
 
     void OnTriggerEnter(Collider other){

@@ -17,7 +17,7 @@ public class HittableBox : ContainerBeHacked
     void Start(){
         current_life = total_life;
         material_instantiated = Instantiate(material);
-
+        this.GetComponent<Rigidbody>().angularVelocity = new Vector3(0.5f,0.5f, 0.5f);
     }
 
 
@@ -44,9 +44,6 @@ public class HittableBox : ContainerBeHacked
         }
     }
 
-    void Update(){
-
-    }
 
     public override bool isHacked() // only if the cube is hacked (broke) the key inside becomes avaliable
     {
