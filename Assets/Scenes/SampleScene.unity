@@ -3695,6 +3695,11 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 100000, guid: 2719141494e987a4c9debd52358c13f6, type: 3}
   m_PrefabInstance: {fileID: 4909321150067317808}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &443561408 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8417285695347894985, guid: 236f540a60214fb44a937e9a307266f1, type: 3}
+  m_PrefabInstance: {fileID: 159129013}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &463930438
 GameObject:
   m_ObjectHideFlags: 0
@@ -4373,6 +4378,10 @@ PrefabInstance:
     - target: {fileID: 1964431040936758, guid: ae95d385019def448981b67e58f4dcc2, type: 3}
       propertyPath: m_Name
       value: Prefab_BigBarrel_color01
+      objectReference: {fileID: 0}
+    - target: {fileID: 4091498853008650, guid: ae95d385019def448981b67e58f4dcc2, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -1.56
       objectReference: {fileID: 0}
     - target: {fileID: 4529784397573094, guid: ae95d385019def448981b67e58f4dcc2, type: 3}
       propertyPath: m_RootOrder
@@ -7329,7 +7338,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 400004, guid: 4b9bec321eba77f4986e1d19e575217e, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 7.94
+      value: 9.82
       objectReference: {fileID: 0}
     - target: {fileID: 400004, guid: 4b9bec321eba77f4986e1d19e575217e, type: 3}
       propertyPath: m_LocalPosition.y
@@ -7337,7 +7346,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 400004, guid: 4b9bec321eba77f4986e1d19e575217e, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 25.76
+      value: 25.57
       objectReference: {fileID: 0}
     - target: {fileID: 400004, guid: 4b9bec321eba77f4986e1d19e575217e, type: 3}
       propertyPath: m_LocalRotation.w
@@ -7842,7 +7851,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1ad42439fb2097d42ae3c480f0accb85, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  graspingRadius: 0.1
+  graspingRadius: 0.3
 --- !u!54 &913225528
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -8830,27 +8839,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 498026, guid: 9b2a4f13248ef214b9e14c5bed331a51, type: 3}
   m_PrefabInstance: {fileID: 1011883112}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &1012690957 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1833216075363814, guid: eadf360efdde47c4d88c200bc50abe34, type: 3}
-  m_PrefabInstance: {fileID: 2046527228}
-  m_PrefabAsset: {fileID: 0}
---- !u!54 &1012690961
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1012690957}
-  serializedVersion: 2
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_UseGravity: 1
-  m_IsKinematic: 0
-  m_Interpolate: 0
-  m_Constraints: 0
-  m_CollisionDetection: 0
 --- !u!1 &1018457942 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1583088881000794, guid: a2939e3aa23efb045b648ac4409c7ae6, type: 3}
@@ -9247,7 +9235,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5651153381362838929, guid: ca66e729c5ea9c147a6b17b2ba409506, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 10.844
+      value: 11.08
       objectReference: {fileID: 0}
     - target: {fileID: 5651153381362838929, guid: ca66e729c5ea9c147a6b17b2ba409506, type: 3}
       propertyPath: m_LocalPosition.y
@@ -9255,7 +9243,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5651153381362838929, guid: ca66e729c5ea9c147a6b17b2ba409506, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -9.902
+      value: -11.35
       objectReference: {fileID: 0}
     - target: {fileID: 5651153381362838929, guid: ca66e729c5ea9c147a6b17b2ba409506, type: 3}
       propertyPath: m_LocalRotation.w
@@ -9390,7 +9378,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1ad42439fb2097d42ae3c480f0accb85, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  graspingRadius: 0.1
+  graspingRadius: 0.3
 --- !u!1001 &1073266597
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -13460,7 +13448,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   solvedSound: {fileID: 1396575222}
-  lightsaber: {fileID: 0}
+  lightsaber: {fileID: 443561408}
 --- !u!82 &1396575222
 AudioSource:
   m_ObjectHideFlags: 0
@@ -22883,7 +22871,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 400004, guid: 4b9bec321eba77f4986e1d19e575217e, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 9.26
+      value: 11.44
       objectReference: {fileID: 0}
     - target: {fileID: 400004, guid: 4b9bec321eba77f4986e1d19e575217e, type: 3}
       propertyPath: m_LocalPosition.y
@@ -22891,7 +22879,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 400004, guid: 4b9bec321eba77f4986e1d19e575217e, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 25.76
+      value: 26.64
       objectReference: {fileID: 0}
     - target: {fileID: 400004, guid: 4b9bec321eba77f4986e1d19e575217e, type: 3}
       propertyPath: m_LocalRotation.w

@@ -15,6 +15,10 @@ public class ObjectAnchor : MonoBehaviour {
 		initial_transform_parent = transform;
 	}
 
+	/// <summary>
+	/// Disables the rigidbody of the object
+	/// </summary>
+	/// <param name="gameObject">The gameobject of the grabbed object</param>
 	protected void disable_rigidbody(GameObject gameObject){
 		//Get the object Rigidbody
 		Rigidbody rigidbody = gameObject.GetComponent<Rigidbody>();
@@ -26,6 +30,10 @@ public class ObjectAnchor : MonoBehaviour {
 		}
 	}
 
+	/// <summary>
+	/// Enables the rigidbody of the object
+	/// </summary>
+	/// <param name="gameObject">The gameobject of the grabbed object</param>
 	protected void activate_rigidbody(GameObject gameObject){
 		//Get the object Rigidbody
 		Rigidbody rigidbody = gameObject.GetComponent<Rigidbody>();
