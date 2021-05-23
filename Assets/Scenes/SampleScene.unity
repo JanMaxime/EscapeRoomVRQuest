@@ -7136,26 +7136,14 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4826777396799022, guid: fec3f56f406140748a5140a789257820, type: 3}
   m_PrefabInstance: {fileID: 39620051}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &857711411 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 100008, guid: ce816f2e6abb0504092c23ed9b970dfd, type: 3}
-  m_PrefabInstance: {fileID: 1295253723}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &857711412
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 857711411}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7f1b53e3ca9e4714eb94ff06796b02c4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!143 &857711416 stripped
 CharacterController:
   m_CorrespondingSourceObject: {fileID: 14300000, guid: ce816f2e6abb0504092c23ed9b970dfd, type: 3}
+  m_PrefabInstance: {fileID: 1295253723}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &857711417 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 400006, guid: ce816f2e6abb0504092c23ed9b970dfd, type: 3}
   m_PrefabInstance: {fileID: 1295253723}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &870646306
@@ -9209,7 +9197,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   handType: 0
-  playerController: {fileID: 1807054013}
+  playerTransform: {fileID: 0}
   teleportation_sphere: {fileID: 0}
   rotation_speed: 2
   trackingSpace: {fileID: 93616366}
@@ -13789,6 +13777,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   time_display: {fileID: 1103638562}
   count_down_time: 1800
+  final_door: {fileID: 0}
+  win_text: {fileID: 0}
+  lose_text: {fileID: 0}
+  win_sound: {fileID: 0}
+  lose_sound: {fileID: 0}
 --- !u!1 &1408807083 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1831902070939854, guid: 881bb6ae806c1b74284970a42224d2ea, type: 3}
@@ -18274,6 +18267,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   time_display: {fileID: 1760761019}
   count_down_time: 1800
+  final_door: {fileID: 0}
+  win_text: {fileID: 0}
+  lose_text: {fileID: 0}
+  win_sound: {fileID: 0}
+  lose_sound: {fileID: 0}
 --- !u!1001 &1862189719
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -20189,7 +20187,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   handType: 1
-  playerController: {fileID: 1807054013}
+  playerTransform: {fileID: 857711417}
   teleportation_sphere: {fileID: 8000219935363682679, guid: 6b5f6ddc0308c3443a53331d1c10f5e6, type: 3}
   rotation_speed: 2
   trackingSpace: {fileID: 93616366}
