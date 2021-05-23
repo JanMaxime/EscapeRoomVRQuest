@@ -13,7 +13,7 @@ public class WeightButton : MonoBehaviour
     {
         container = other.GetComponent<Container>();
         if (container == null) return;
-        
+        Debug.LogWarning(container);
         // if the container is full and the closet hasn't been moved, move the closet
         if (container.isFull() && !related_closet.isMoveable())
         {

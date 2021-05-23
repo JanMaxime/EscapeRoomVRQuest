@@ -5,7 +5,12 @@ using UnityEngine;
 public class SafeDoor : ContainerBeHacked
 {
     public bool locked = true;
-    protected float max_y = 0.7f; 
+    protected float max_y; 
+
+    void Start()
+    {
+        max_y = transform.position.y + 0.7f; //the door will move upwards for 0.7f
+    }
     // Update is called once per frame
     void Update()
     {
