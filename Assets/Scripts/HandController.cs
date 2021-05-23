@@ -8,7 +8,7 @@ public class HandController : MonoBehaviour
     [Header("Hand Properties")]
     public HandType handType;
 
-	[Header("Tracking space")]
+    [Header("Tracking space")]
     public Transform trackingSpace;
 
 
