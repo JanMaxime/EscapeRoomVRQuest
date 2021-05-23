@@ -9185,11 +9185,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   handType: 0
-  playerTransform: {fileID: 0}
-  teleportation_sphere: {fileID: 0}
-  rotation_speed: 2
   trackingSpace: {fileID: 93616366}
-  characterController: {fileID: 0}
 --- !u!65 &1059531007
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -13741,35 +13737,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0fd8d528aa0aeaa468944a3629dbed63, type: 3}
---- !u!1 &1406076462 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 0fd8d528aa0aeaa468944a3629dbed63, type: 3}
-  m_PrefabInstance: {fileID: 1406076461}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1406076463 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 0fd8d528aa0aeaa468944a3629dbed63, type: 3}
   m_PrefabInstance: {fileID: 1406076461}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1406076464
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1406076462}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0538b06b86951844fbce891aeab4f143, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  time_display: {fileID: 1103638562}
-  count_down_time: 1800
-  final_door: {fileID: 0}
-  win_text: {fileID: 0}
-  lose_text: {fileID: 0}
-  win_sound: {fileID: 0}
-  lose_sound: {fileID: 0}
 --- !u!1 &1408807083 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1831902070939854, guid: 881bb6ae806c1b74284970a42224d2ea, type: 3}
@@ -18236,30 +18208,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 0fd8d528aa0aeaa468944a3629dbed63, type: 3}
   m_PrefabInstance: {fileID: 1852729020}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &1852729022 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 0fd8d528aa0aeaa468944a3629dbed63, type: 3}
-  m_PrefabInstance: {fileID: 1852729020}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1852729023
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1852729022}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0538b06b86951844fbce891aeab4f143, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  time_display: {fileID: 1760761019}
-  count_down_time: 1800
-  final_door: {fileID: 0}
-  win_text: {fileID: 0}
-  lose_text: {fileID: 0}
-  win_sound: {fileID: 0}
-  lose_sound: {fileID: 0}
 --- !u!1001 &1862189719
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -20158,9 +20106,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 067e36c25cf11be48b17a01d9e6247e1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  penColor:
-    serializedVersion: 2
-    rgba: 0
   notepad: {fileID: 691798573}
 --- !u!114 &1978802976
 MonoBehaviour:
@@ -20175,11 +20120,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   handType: 1
-  playerTransform: {fileID: 857711417}
-  teleportation_sphere: {fileID: 8000219935363682679, guid: 6b5f6ddc0308c3443a53331d1c10f5e6, type: 3}
-  rotation_speed: 2
   trackingSpace: {fileID: 93616366}
-  characterController: {fileID: 857711416}
 --- !u!65 &1978802977
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -20193,6 +20134,23 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.0005, y: 0.0005, z: 0.0005}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &1978802978
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1978802973}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d60044283b31e6c45840308a6469fd62, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerTransform: {fileID: 857711417}
+  teleportation_sphere: {fileID: 8000219935363682679, guid: 6b5f6ddc0308c3443a53331d1c10f5e6, type: 3}
+  rotation_speed: 2
+  trackingSpace: {fileID: 93616366}
+  characterController: {fileID: 857711416}
 --- !u!1 &1985308836
 GameObject:
   m_ObjectHideFlags: 0
