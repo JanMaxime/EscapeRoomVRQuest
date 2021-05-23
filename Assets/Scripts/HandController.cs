@@ -10,7 +10,7 @@ public class HandController : MonoBehaviour {
 
 	// Store the player controller to forward it to the object
 	[Header( "Player Controller" )]
-	public MainPlayerController playerController;
+	public Transform playerTransform;
 
     [Header("Teleportation sphere")]
     public ObjectAnchor teleportation_sphere;
@@ -184,7 +184,7 @@ public class HandController : MonoBehaviour {
                 teleportation_sphere_instantiated.transform.RotateAround(teleportation_sphere_instantiated.transform.position, Vector2.up, OVRInput.Get( OVRInput.Axis2D.PrimaryThumbstick).x * rotation_speed);
 
                 if (tp_activated_button_pushed){
-                    characterController.Move(teleportation_sphere_instantiated.transform.position - playerController.transform.position);
+                    characterController.Move(teleportation_sphere_instantiated.transform.position - playerTransform.position);
                     characterController.transform.eulerAngles = new Vector3(0f, teleportation_sphere_instantiated.transform.eulerAngles.y, 0f);
                 }
 
