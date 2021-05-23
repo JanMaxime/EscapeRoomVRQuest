@@ -61,6 +61,10 @@ public class Door : MonoBehaviour
         }
     }
 
+    public bool isOpen()
+    {
+        return can_be_opened;
+    }
     /*void OnTriggerEnter(Collider other)
     {
         HandController hand_controller = other.GetComponent<HandController>();
