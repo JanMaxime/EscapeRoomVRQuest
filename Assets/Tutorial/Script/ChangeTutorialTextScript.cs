@@ -42,6 +42,8 @@ public class ChangeTutorialTextScript : MonoBehaviour
         "Mission:\n\nExplore the room and find the key to open the door.",
         //5
         "Mission:\n\nThis safe might contain the key, find a way to open it.\n"+
+            "- Press LY to open/close the notepad to take a memo"+
+            "- Hold B while writing the code on it with the right controller"+
             "- The password must be hidden somewhere in the room.",
         //6
         "Mission:\n\nThis number written on the book has to be the clue you were searching.",

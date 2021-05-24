@@ -28,20 +28,20 @@ public class ScreenTextChangeScript : MonoBehaviour
         "Rejoice!",
         "You have been personally chosen by I, the brilliant professor Moriatz to become a superior mind of this world!",
         "Resolve the puzzles, get out of the basement and you will be ensured a promising future.",
-        "But do not waste my time or you can stay here forever.",
+        "But don’t you dare waste my time or you will stay here forever. ",
         "Hurry up, the clock is already ticking…",
         //6
         "Humpf, attracted by light like a mosquito. You can’t even see in the dark, what a disappointment.",
         //7
-        "Maybe you have some potential in the end. You just turn on the light, but the door is still closed. You will never find the key… the way out I mean.",
+        "Maybe you have some potential in the end. You just turned on the light, but the door is still closed. You will never find the key… the way out I mean.",
         //8
         "Not too shabby… But this was too easy, let’s see how you do in the next room.",
         //9
-        "In this safe is my best invention, something that ignores even the laws of the universe! But it’s locked with a password too bad for you.",
+        "Hidden in this safe is my best invention, something that ignores even the laws of the universe! But it’s locked with a password, too bad for you.",
         //10
         "This is a nice cube isn’t it, made in Norissium. Nothing special, just the most solid material that I created.",
         //11
-        "Aren’t you intrigued ?`These metallic cubes are see heavy that no human can possibly lift them. It’s not like you could touch them anyway.",
+        "Aren’t you intrigued ?`These metallic cubes are so heavy that no human can possibly lift them. It’s not like you could touch them anyway.",
         //12
         "So you finally find my lovely lightsaber! One swing and it disintegrates anything. Very useful to do some cleaning."
         };
@@ -146,9 +146,8 @@ public class ScreenTextChangeScript : MonoBehaviour
     protected bool NearObject(GameObject obj)
     {
         float a = (obj.transform.position[0] - characterController.transform.position[0]) + (obj.transform.position[2] - characterController.transform.position[2]);
-        if (Mathf.Abs(obj.transform.position[0] - characterController.transform.position[0]) < 1.5 & Mathf.Abs(obj.transform.position[2] - characterController.transform.position[2]) < 1.5)
+        if (Mathf.Abs(obj.transform.position[0] - characterController.transform.position[0]) < 2 & Mathf.Abs(obj.transform.position[2] - characterController.transform.position[2]) < 2)
         {
-            UnityEngine.Debug.Log(safeBool);
             return true;
         }
         else
