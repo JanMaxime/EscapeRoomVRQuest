@@ -7,15 +7,14 @@ public class EnterButton : MonoBehaviour
 {
     public Text screen_text;
     public SafeDoor control_door;
-    public string correct_pw;
+    public string correct_pw; // to store the correct password
 
     public AudioSource wrong_sound;
     public AudioSource unlock_sound;
 
-    void OnTriggerEnter(Collider other) //if a collider coming, check if the collier is key, if their names correspond to the same door
+    void OnTriggerEnter(Collider other) //if a collider coming, check if the collier is hand
     {
         HandController hand_controller = other.GetComponent<HandController>();
-        //Debug.LogWarning(hand_controller);
         if (hand_controller == null) return;
 
         bool right = (hand_controller.handType == HandController.HandType.RightHand);
@@ -29,10 +28,10 @@ public class EnterButton : MonoBehaviour
         }
         else
         {
+            //correct password
             unlock_sound.Play();
 
             //controlled door open
-            //door open: position x = 3
             control_door.locked = false;
         }
     }

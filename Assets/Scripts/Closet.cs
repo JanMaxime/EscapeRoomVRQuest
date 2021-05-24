@@ -13,11 +13,10 @@ public class Closet : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //Debug.LogWarning(moveable);
         // if triggered, the closet will move horizontally and show the door
         if (moveable == true && transform.position.z < max_z)
         {
-            transform.position = transform.position + new Vector3(0f, 0f, 0.02f);
+            transform.position = transform.position + new Vector3(0f, 0f, 0.01f);
         }
     }
     public bool isMoveable()

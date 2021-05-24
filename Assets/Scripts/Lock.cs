@@ -21,8 +21,6 @@ public class Lock : MonoBehaviour
         Key key_collide = other.GetComponent<Key>();
         if (key_collide == null) return;
 
-        //inserted_key = key_collide;
-
         if (is_locked)
         {
             //not correct key
@@ -32,7 +30,7 @@ public class Lock : MonoBehaviour
                 return;
             }
 
-            //open the door
+            //correct key, open the door
             unlock_sound.Play();
             is_locked = false;
         }
@@ -46,7 +44,7 @@ public class Lock : MonoBehaviour
         //if player release the key
         if (key_collide.is_available())
         {
-            //Debug.LogWarning("key is avaliable, it will be attached to the lock!");
+            // the key will be attached (inserted) to the lock
             key_collide.transform.SetParent(trans);
             //Get the object Rigidbody
             Rigidbody rigidbody = key_collide.GetComponent<Rigidbody>();
