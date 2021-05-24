@@ -13,10 +13,14 @@ public class Timer : MonoBehaviour
     public GameObject lose_text;
     public AudioSource win_sound;
     public AudioSource lose_sound;
+    public AudioClip[] endVoices;
+    public GameObject screen;
+    public Text screenText;
 
     static protected Light[] light_comps_in_the_scene;
     protected int remaining_time;
     private float timer = 0;
+    private bool finish = false;
     // Start is called before the first frame update
     void Start()
     {
@@ -28,6 +32,7 @@ public class Timer : MonoBehaviour
         //hide the both text
         win_text.GetComponent<Renderer>().enabled = false;
         lose_text.GetComponent<Renderer>().enabled = false;
+        screen.GetComponent<Renderer>().enabled = false;
     }
 
     // Update is called once per frame
@@ -53,6 +58,11 @@ public class Timer : MonoBehaviour
                     }
                     lose_text.GetComponent<Renderer>().enabled = true;
                     lose_sound.Play();
+                    screen.GetComponent<Renderer>().enabled = true;
+                    screen.GetComponent<Renderer>().material.SetColor("_EmissionColor", Color.red);
+                    screen.GetComponent<AudioSource>().clip = endVoices[1];
+                    screen.GetComponent<AudioSource>().Play();
+                    screenText.text = "Well it was to be expected, another failure. But at least it was a bit intertaining.\nGood bye and enjoy you new home for the eternity";
                 }
             }
         }
@@ -61,6 +71,16 @@ public class Timer : MonoBehaviour
         {
             win_sound.Play();
             win_text.GetComponent<Renderer>().enabled = true;
+            screen.GetComponent<Renderer>().enabled = true;
+            if (!finish)
+            {
+                screen.GetComponent<AudioSource>().clip = endVoices[0];
+                screen.GetComponent<AudioSource>().Play();
+                finish = true;
+            }
+            screen.GetComponent<Renderer>().material.SetColor("_EmissionColor", Color.green);
+            screenText.text = "Congratualtion, you managed to escape. I feel that will accomplish a lot together!";
+            
         }
 
     }

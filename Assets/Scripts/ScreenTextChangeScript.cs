@@ -30,12 +30,12 @@ public class ScreenTextChangeScript : MonoBehaviour
         "You have been personally chosen by I, the brilliant professor Moriatz to become a superior mind of this world!",
         "But I must be sure of your potential before raising you to the next stage! ",
         "Resolve the puzzles, get out of the basement and you will be ensured a promising future.",
-        "Don’t you dare waste my time or you will stay here forever. ",
-        "Hurry up, the clock is already ticking?",
+        "But don’t you dare waste my time or you will stay here forever! ",
+        "Hurry up, the clock is already ticking.",
         //7
         "Humpf, attracted by light like a mosquito. You can’t even see in the dark, what a disappointment.",
         //8
-        "I am not still convinced about your potential... You just turned on the light, but the door is still closed. You will never find the key… the way out I mean.",
+        "I am not still not convinced about your potential... You just turned on the light, but the door is still closed. You will never find the key… the way out I mean.",
         //9
         "Not too shabby I suppose… But this was too easy, let’s see how you will perform in the next room.",
         //10
@@ -87,24 +87,24 @@ public class ScreenTextChangeScript : MonoBehaviour
         //near the safe
         if (safeBool && NearObject(safeObject))
         {
-            ChangeAudio(9);
+            ChangeAudio(10);
             safeBool = false;
         }
         //near the cube to break
         if (cubeBool && NearObject(cubeObject))
         {
-            ChangeAudio(10);
+            ChangeAudio(11);
             cubeBool = false;
         }
         //near the glass panel
         if (glassBool && NearObject(glassObject))
         {
-            ChangeAudio(11);
+            ChangeAudio(12);
             glassBool = false;
         }
         if (saberBool && (lightsaber.gameObject.GetComponent<Rigidbody>().constraints == RigidbodyConstraints.None))
         {
-            ChangeAudio(12);
+            ChangeAudio(13);
             saberBool = false;
         }
 
@@ -123,7 +123,7 @@ public class ScreenTextChangeScript : MonoBehaviour
     {
         NextDialogue(num);
         audioComp.clip = audioList[num];
-        audioComp.Play();
+        audioComp.PlayDelayed(1f);
     }
 
     // on/off for the tv screen

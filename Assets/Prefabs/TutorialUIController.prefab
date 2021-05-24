@@ -160,7 +160,7 @@ GameObject:
   - component: {fileID: 6925454195665410403}
   - component: {fileID: 6925454195665410400}
   - component: {fileID: 6925454195665410401}
-  - component: {fileID: 6925454195665410402}
+  - component: {fileID: 8358244975307165656}
   - component: {fileID: 6925454195665409693}
   m_Layer: 5
   m_Name: TutorialUIController
@@ -234,7 +234,7 @@ MonoBehaviour:
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
   m_DynamicPixelsPerUnit: 1
-  m_PresetInfoIsWorld: 1
+  m_PresetInfoIsWorld: 0
 --- !u!114 &6925454195665410401
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -252,7 +252,7 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
---- !u!114 &6925454195665410402
+--- !u!114 &8358244975307165656
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -261,17 +261,17 @@ MonoBehaviour:
   m_GameObject: {fileID: 6925454195665410407}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: eacfddc329243ca45b086faafee61cab, type: 3}
+  m_Script: {fileID: 11500000, guid: 30e945549a8e1e14cb34a71be3a76a81, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   characterController: {fileID: 0}
   puzzle1Clipboard: {fileID: 0}
-  Large_round_lamp: {fileID: 0}
+  large_round_lamp: {fileID: 0}
   doorLock: {fileID: 0}
   screenController: {fileID: 0}
-  safeObject: {fileID: 0}
-  cubeObject: {fileID: 0}
-  glassObject: {fileID: 0}
+  control_door: {fileID: 0}
+  safe: {fileID: 0}
+  book: {fileID: 0}
 --- !u!82 &6925454195665409693
 AudioSource:
   m_ObjectHideFlags: 0
