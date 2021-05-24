@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class SafeDoor : ContainerBeHacked
 {
-    public bool locked = true;
+    public bool locked = true; // all safe are locked initially
     protected float max_y; 
 
     void Start()
@@ -14,10 +14,10 @@ public class SafeDoor : ContainerBeHacked
     // Update is called once per frame
     void Update()
     {
+        // if the door is unlocked open the door
         if (!locked && transform.position.y < max_y)
         {
             // Animate the door
-            //Debug.LogWarning("DOOR OPEN");
             transform.position = transform.position + new Vector3(0f, 0.01f, 0f);
         }
     }

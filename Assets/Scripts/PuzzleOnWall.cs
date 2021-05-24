@@ -21,6 +21,7 @@ public class PuzzleOnWall : MonoBehaviour
         }
         else
         {
+            // if the light component is off, show the puzzel on the wall
             gameObject.GetComponent<Renderer>().enabled = true;
             //Debug.LogWarning("The light is off! show the puzzle!");
         }

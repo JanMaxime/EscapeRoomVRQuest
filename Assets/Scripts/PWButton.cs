@@ -14,16 +14,13 @@ public class PWButton : MonoBehaviour
         button_text = gameObject.name; //name of the button is set to the number!!
     }
 
-    void OnTriggerEnter(Collider other) //if a collider coming, check if the collier is key, if their names correspond to the same door
+    void OnTriggerEnter(Collider other) //if a collider coming, check if the collier is hand
     {
         HandController hand_controller = other.GetComponent<HandController>();
-        //Debug.LogWarning(hand_controller);
         if (hand_controller == null) return;
 
         bool right = (hand_controller.handType == HandController.HandType.RightHand);
-        StartCoroutine(VibrationManager.vibrate(right, 0.1f, 1f, 1f));
-
-        //Debug.LogWarning(button_text);
+        StartCoroutine(VibrationManager.vibrate(right, 0.1f, 1f, 1f)); //vibrate for corresponding hand
 
         //add the string to the text in the screen
         screen_text.text += button_text;

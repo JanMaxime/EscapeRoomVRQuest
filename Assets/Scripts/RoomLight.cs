@@ -17,10 +17,6 @@ public class RoomLight : MonoBehaviour
 
     void Start()
     {
-        //main_light = gameObject.transform.Find(light_name).gameObject;
-        //Debug.LogWarning(gameObject.name); //gameObject is the object the script attaches to!
-        //light_comp = gameObject.GetComponentInChildren(typeof(Light)) as Light;
-        //this.light_comp = gameObject.transform.GetChild(0).gameObject.GetComponent(typeof(Light)) as Light; //the first child is the light component
         main_light_prefab = gameObject.transform.Find("Large_round_lamp").gameObject;
 
         material = main_light_prefab.GetComponent<Renderer>().material;
@@ -32,6 +28,7 @@ public class RoomLight : MonoBehaviour
         }
 
         light_comp.enabled = is_on;
+        // set the material of the light
         if (is_on)
         {
             material.EnableKeyword("_EMISSION");
@@ -48,6 +45,7 @@ public class RoomLight : MonoBehaviour
         bool status_temp = true;
         for (int i = 0; i < light_switches_in_the_scene.Length; i++)
         {
+            // check corresponding light switches
             if (light_switches_in_the_scene[i].controlled_light == this.light_name && light_switches_in_the_scene[i].is_on == false)
             {
                 status_temp = false; // one switch is not on then the light will be off;
@@ -58,6 +56,7 @@ public class RoomLight : MonoBehaviour
             }
         }
         light_comp.enabled = status_temp;
+        // set the material of the light
         if (status_temp)
         {
             material.EnableKeyword("_EMISSION");
