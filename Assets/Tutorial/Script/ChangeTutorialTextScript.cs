@@ -35,7 +35,7 @@ public class ChangeTutorialTextScript : MonoBehaviour
             "Press a thumbstick to show/hide the mission window.",
         //2
         "Mission:\n\nIt is too dark to see anything, find a way to light up the main light.\nThere must be a hint somewhere...\n" +
-            "- Grab the clipboard on the drawer by pushing the D button.",
+            "- Grab the clipboard on the drawer by pushing the index trigger.",
         //3
         "Mission:\n\nThis must be a hint to light up the lights.\n" +
             "- Find the right switches to activate. ",
@@ -43,11 +43,11 @@ public class ChangeTutorialTextScript : MonoBehaviour
         "Mission:\n\nExplore the room and find the key to open the door.",
         //5
         "Mission:\n\nThis safe might contain the key, find a way to open it.\n"+
-            "- Press LY to open/close the notepad to take a memo"+
-            "- Hold B while writing the code on it with the right controller"+
             "- The password must be hidden somewhere in the room.",
         //6
-        "Mission:\n\nThis number written on the book has to be the clue you were searching.",
+        "Mission:\n\nThis number written on the book has to be the clue you were searching.\n"+
+            "- Press Y to open/close the notepad to take a memo\n"+
+            "- Hold B while writing the code on it with the right controller",
         //7
         "Mission:\n\nUnlock the door and go in the next room.",
         //8
@@ -82,35 +82,35 @@ public class ChangeTutorialTextScript : MonoBehaviour
         }
 
         //Go to next mission if the conditions for the current mission is fullfilled
-        //2
-        if (missionNumber == 1 && characterController.transform.position[2] < -6)
+        //2 if player is near lamp
+        if (missionNumber == 1 && characterController.transform.position[2] < -5.5)
         {
             screenController.GetComponent<ScreenTextChangeScript>().ChangeAudio(6);
             //disactivates the tutorial video
             tutorialScreen.SetActive(false);
             NextMission();
-        }//3
-        else if (missionNumber == 2 && puzzle1Clipboard.transform.position[1] > clipboardPos + 0.1)
+        }//3 if he grabs the clipboard
+        else if (missionNumber == 2 && !puzzle1Clipboard.GetComponent<Rigidbody>().useGravity)
         {
             NextMission();
-        }//4
+        }//4 if he turns on the light
         else if (missionNumber == 3 && lightMaterial.IsKeywordEnabled("_EMISSION"))
         {
             screenController.GetComponent<ScreenTextChangeScript>().ChangeAudio(7);
             NextMission();
-        }//5
+        }//5 if he is near the safe
         else if (missionNumber == 4 && NearObject(safe))
         {
             NextMission();
-        }//6
-        else if (missionNumber == 5 && book.transform.position[1] > bookPos + 0.1)
+        }//6 if he grabs the book that hides the code
+        else if (missionNumber == 5 && !book.GetComponent<Rigidbody>().useGravity)
         {
             NextMission();
-        }//7
+        }//7 if he opens the safe
         else if (missionNumber == 6 && !control_door.locked)
         {
             NextMission();
-        }//8
+        }//8 if he goes to the next room
         else if (missionNumber == 7 && characterController.transform.position[2] > 0.5)
         {
             screenController.GetComponent<ScreenTextChangeScript>().ChangeAudio(8);

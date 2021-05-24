@@ -23,7 +23,7 @@ public class ScreenTextChangeScript : MonoBehaviour
     protected int dialogueNum;
     protected bool intro = true, safeBool = true, cubeBool = true, glassBool = true, saberBool = true;
 
-    //dialogues for the intro
+    //dialogues 
     protected string[] dialogueArray = {
         "Hmmm, finally awake I see? ",
         "Rejoice!",
@@ -32,20 +32,20 @@ public class ScreenTextChangeScript : MonoBehaviour
         "Resolve the puzzles, get out of the basement and you will be ensured a promising future.",
         "Don’t you dare waste my time or you will stay here forever. ",
         "Hurry up, the clock is already ticking?",
-        //6
-        "Humpf, attracted by light like a mosquito. You can’t even see in the dark, what a disappointment.",
         //7
-        "Maybe you have some potential in the end. You just turned on the light, but the door is still closed. You will never find the key... the way out I mean.",
+        "Humpf, attracted by light like a mosquito. You can’t even see in the dark, what a disappointment.",
         //8
-        "Not too shabby?But this was too easy, let’s see how you do in the next room.",
+        "I am not still convinced about your potential... You just turned on the light, but the door is still closed. You will never find the key… the way out I mean.",
         //9
-        "Hidden in this safe is my best invention, something that ignores even the laws of the universe! But it’s locked with a password, too bad for you.",
+        "Not too shabby I suppose… But this was too easy, let’s see how you will perform in the next room.",
         //10
-        "This is a nice cube isn’t it, made in Norissium. Nothing special, just the most solid material that I created.",
+        "Hidden in this safe is my best invention, something that even ignores the laws of the universe! But it’s locked with a password, too bad for you.",
         //11
-        "Aren’t you intrigued ?`These metallic cubes are so heavy that no human can possibly lift them. It’s not like you could touch them anyway.",
+        "This is a nice cube isn’t it, made in Norissium. Nothing special, just the most solid material that I created during my free time.",
         //12
-        "So you finally find my lovely lightsaber! One swing and it disintegrates anything. Very useful to do some cleaning."
+        "Aren’t you intrigued ?`These metallic cubes are so heavy that no human can possibly lift them. It’s not like you could touch them anyway.",
+        //13
+        "So you finally found my lovely lightsaber! One swing and it disintegrates anything. Very useful to do some cleaning."
         };
 
     // Start is called before the first frame update
@@ -58,9 +58,9 @@ public class ScreenTextChangeScript : MonoBehaviour
         timerCanvas.enabled = false;
 
         //play the audio and screen 3 sec after awake
-        audioComp.PlayDelayed(3.0f);
+        audioComp.PlayDelayed(6.0f);
         Activation();
-        Invoke("Activation", 2.9f);
+        Invoke("Activation", 5.5f);
     }
 
     // Update is called once per frame
