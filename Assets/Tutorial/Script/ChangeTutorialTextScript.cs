@@ -12,38 +12,43 @@ public class ChangeTutorialTextScript : MonoBehaviour
     //scene gameObjects
     public GameObject characterController;
     public GameObject puzzle1Clipboard;
-    public GameObject Large_round_lamp;
+    public GameObject large_round_lamp;
     public GameObject doorLock;
     public GameObject screenController;
-    public GameObject safeObject;
-    public GameObject cubeObject;
-    public GameObject glassObject;
+    public SafeDoor control_door;
+    public GameObject safe;
+    public GameObject book;
 
     private GameObject tutorialScreen;
     private AudioSource missionClearSound;
     private Material lightMaterial;
     private Text txt;
-    private float clipboardPos;
+    private float clipboardPos, bookPos;
     private int missionNumber;
-    private bool safeBool = true, cubeBool = true, glassBool = true;
 
+    //text for each mission
     private string[] missionTextArray = { 
         //1
-        "Mission:\nMove near the lamp.\n- Press button A and throw the ball.\n" +
+        "Mission:\n\nMove near the lamp.\n- Press button A and throw the ball.\n" +
             "- Press button B to teleport to the ball or button C to cancel.\n\n\n\n"+
-            "Press X to show/hide the mission window",
+            "Press X to show/hide the mission window.",
         //2
-        "Mission:\n It is too dark to see anything, find a way to light up the main light.\nThere must be a hint somewhere...\n" +
-            "- Grab the clipboard on the drawer by pushing the D button",
+        "Mission:\n\nIt is too dark to see anything, find a way to light up the main light.\nThere must be a hint somewhere...\n" +
+            "- Grab the clipboard on the drawer by pushing the D button.",
         //3
-        "Mission:\nThis must be a hint to light up the lights.\n" +
+        "Mission:\n\nThis must be a hint to light up the lights.\n" +
             "- Find the right switches to activate. ",
         //4
-        "Mission:\nFind the key to open the door",
+        "Mission:\n\nExplore the room and find the key to open the door.",
         //5
-        "Mission:\nGo in the next room",
+        "Mission:\n\nThis safe might contain the key, find a way to open it.\n"+
+            "- The password must be hidden somewhere in the room.",
         //6
-        "Mission:\nFind a way out"
+        "Mission:\n\nThis number written on the book has to be the clue you were searching.",
+        //7
+        "Mission:\n\nUnlock the door and go in the next room.",
+        //8
+        "Mission:\n\nFind a way out."
             };
 
     // Start is called before the first frame update
@@ -54,29 +59,30 @@ public class ChangeTutorialTextScript : MonoBehaviour
         tutorialScreen = gameObject.transform.GetChild(1).gameObject;
         missionClearSound = gameObject.GetComponent<AudioSource>(); 
         clipboardPos = puzzle1Clipboard.transform.position[1];
-        lightMaterial = Large_round_lamp.gameObject.GetComponent<Renderer>().material;
+        bookPos = book.transform.position[1];
+        lightMaterial = large_round_lamp.gameObject.GetComponent<Renderer>().material;
 
         //Set the first mission on the screen
         txt.text = missionTextArray[0];
         missionNumber = 1;
+        //desactivate the display until end of intro
         this.gameObject.transform.GetChild(2).gameObject.SetActive(false);
-
-        UnityEngine.Debug.Log(safeBool);// safeObject.transform.position);
     }
 
     // Update is called once per frame
     void Update()
     {
-
+        //Activates the mission window if the intro is finished
         if (!this.gameObject.transform.GetChild(2).gameObject.activeSelf && !screenController.GetComponent<ScreenTextChangeScript>().GetIntroStatus())
         {
-
             this.gameObject.transform.GetChild(2).gameObject.SetActive(true);
         }
+
         //Go to next mission if the conditions for the current mission is fullfilled
         //2
         if (missionNumber == 1 && characterController.transform.position[2] < -6)
         {
+            screenController.GetComponent<ScreenTextChangeScript>().ChangeAudio(6);
             //disactivates the tutorial video
             tutorialScreen.SetActive(false);
             NextMission();
@@ -87,37 +93,29 @@ public class ChangeTutorialTextScript : MonoBehaviour
         }//4
         else if (missionNumber == 3 && lightMaterial.IsKeywordEnabled("_EMISSION"))
         {
+            screenController.GetComponent<ScreenTextChangeScript>().ChangeAudio(7);
             NextMission();
         }//5
-        else if (missionNumber == 4 && !doorLock.GetComponent<Lock>().is_locked)
+        else if (missionNumber == 4 && NearObject(safe))
         {
             NextMission();
-            screenController.GetComponent<ScreenTextChangeScript>().ChangeAudio(3);
-        }//5
-        else if (missionNumber == 5 && characterController.transform.position[2]>0.5)
+        }//6
+        else if (missionNumber == 5 && book.transform.position[1] > bookPos + 0.1)
         {
             NextMission();
-        }
-
-        //voices trigger
-        if (safeBool && NearObject(safeObject))
+        }//7
+        else if (missionNumber == 6 && !control_door.locked)
         {
-            screenController.GetComponent<ScreenTextChangeScript>().ChangeAudio(0);
-            safeBool = false;
-        }
-        if (cubeBool && NearObject(cubeObject))
+            NextMission();
+        }//8
+        else if (missionNumber == 7 && characterController.transform.position[2] > 0.5)
         {
-            screenController.GetComponent<ScreenTextChangeScript>().ChangeAudio(1);
-            cubeBool = false;
-        }
-        if (glassBool && NearObject(glassObject))
-        {
-            screenController.GetComponent<ScreenTextChangeScript>().ChangeAudio(2);
-            glassBool = false;
-        }
-        
+            screenController.GetComponent<ScreenTextChangeScript>().ChangeAudio(8);
+            NextMission();
+        }        
     }
 
+    //show/hide the mission window if button X is pushed
     private void LateUpdate()
     {
 
@@ -134,6 +132,7 @@ public class ChangeTutorialTextScript : MonoBehaviour
         }
     }
 
+    //activates the mission window and displays the next mission
     public void NextMission()
     {
         txt.gameObject.SetActive(true);
@@ -143,13 +142,12 @@ public class ChangeTutorialTextScript : MonoBehaviour
         missionNumber += 1;
     }
 
+    //calculate the distance between the player and an object
     protected bool NearObject(GameObject obj)
     {
         float a = (obj.transform.position[0] - characterController.transform.position[0]) + (obj.transform.position[2] - characterController.transform.position[2]);
-        if (Mathf.Abs(obj.transform.position[0] - characterController.transform.position[0])<1.5 & Mathf.Abs(obj.transform.position[2] - characterController.transform.position[2])<1.5)
+        if (Mathf.Abs(obj.transform.position[0] - characterController.transform.position[0])<2 & Mathf.Abs(obj.transform.position[2] - characterController.transform.position[2])<2)
         {
-
-            UnityEngine.Debug.Log(safeBool); 
             return true;
         }
         else
@@ -157,5 +155,4 @@ public class ChangeTutorialTextScript : MonoBehaviour
             return false;
         }
     }
-
 }
