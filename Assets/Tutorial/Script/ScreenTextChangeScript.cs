@@ -24,18 +24,18 @@ public class ScreenTextChangeScript : MonoBehaviour
 
     //dialogues for the intro
     protected string[] dialogueArray = {
-        "Hmmm, finally awake I see…  ",
+        "Hmmm, finally awake I see? ",
         "Rejoice!",
         "You have been personally chosen by I, the brilliant professor Moriatz to become a superior mind of this world!",
         "Resolve the puzzles, get out of the basement and you will be ensured a promising future.",
         "But don’t you dare waste my time or you will stay here forever. ",
-        "Hurry up, the clock is already ticking…",
+        "Hurry up, the clock is already ticking?",
         //6
         "Humpf, attracted by light like a mosquito. You can’t even see in the dark, what a disappointment.",
         //7
-        "Maybe you have some potential in the end. You just turned on the light, but the door is still closed. You will never find the key… the way out I mean.",
+        "Maybe you have some potential in the end. You just turned on the light, but the door is still closed. You will never find the key?the way out I mean.",
         //8
-        "Not too shabby… But this was too easy, let’s see how you do in the next room.",
+        "Not too shabby?But this was too easy, let’s see how you do in the next room.",
         //9
         "Hidden in this safe is my best invention, something that ignores even the laws of the universe! But it’s locked with a password, too bad for you.",
         //10
