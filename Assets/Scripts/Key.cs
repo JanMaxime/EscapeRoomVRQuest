@@ -9,7 +9,7 @@ public class Key : ObjectAnchor
     Collider box_collider;
 
     // gameobject in which the key is hidden, this is to make sure the key can only be grabbed if the safe/floating cube is hacked
-    public ContainerBeHacked related_container; 
+    public ContainerBeHacked related_container;
     protected bool can_be_grabbed = false;
     private int count = 1;
 
@@ -29,7 +29,7 @@ public class Key : ObjectAnchor
         {
             box_collider.isTrigger = true;
         }
-        if (related_container.isHacked() && count==1)
+        if (related_container.isHacked() && count == 1)
         {
             count += 1; // avoid continuous set of isKinematic
             can_be_grabbed = true;
@@ -48,7 +48,7 @@ public class Key : ObjectAnchor
         {
             // Store the hand controller in memory
             this.hand_controller = hand_controller;
-            
+
             // Set the object to be placed in the hand controller referential
             transform.SetParent(hand_controller.transform);
 

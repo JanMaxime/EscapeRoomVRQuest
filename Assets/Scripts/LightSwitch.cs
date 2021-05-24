@@ -47,12 +47,12 @@ public class LightSwitch : ObjectAnchor
                 float to_update;
 
                 //try to turn off
-                if(diff < 0)
+                if (diff < 0)
                 {
                     to_update = Mathf.Min(70f - avaliable_rotation_to_on, Mathf.Abs(5f * diff)); // the switch can only rotate within a range
                     avaliable_rotation_to_on = avaliable_rotation_to_on + to_update;
                     to_update = to_update * -1f;
-                    if(avaliable_rotation_to_on == 70f)
+                    if (avaliable_rotation_to_on == 70f)
                     {
                         sound.Play();
                         this.is_on = false;

@@ -8,7 +8,7 @@ public class HittableBox : ContainerBeHacked
     public AudioSource destroy_sound;
 
     [Header("Life points")]
-    public float total_life = 200f;
+    public float total_life = 500f;
     private float current_life;
 
 
@@ -35,7 +35,8 @@ public class HittableBox : ContainerBeHacked
     public void hit(float velocity_magnitude, bool right)
     {
         //If the cube is already broken, nothing needs to be done
-        if (current_life <= 0) {
+        if (current_life <= 0)
+        {
             return;
         }
         //Modify the colour of the cube by an amount proportional to the hit force
@@ -52,7 +53,7 @@ public class HittableBox : ContainerBeHacked
         {
             //Play the destroy sound and start a vibration proportional to the hit strength
             destroy_sound.Play();
-            StartCoroutine(VibrationManager.vibrate(right, 0.3f, 1, Mathf.Min(1f, velocity_magnitude / 40f)));
+            StartCoroutine(VibrationManager.vibrate(right, 0.3f, 1, Mathf.Min(1f, velocity_magnitude / 25f)));
 
             //Put rigidbodies to all sides of the cube so that they fall to the ground
             GetComponent<Rigidbody>().constraints = RigidbodyConstraints.None;
@@ -68,8 +69,8 @@ public class HittableBox : ContainerBeHacked
         {
             //Play the hit sound and start a vibration proportional to the hit strength
             hit_sound.Play();
-            StartCoroutine(VibrationManager.vibrate(right, 0.1f, 1, Mathf.Min(1f, velocity_magnitude / 40f)));
- 
+            StartCoroutine(VibrationManager.vibrate(right, 0.1f, 1, Mathf.Min(1f, velocity_magnitude / 25f)));
+
         }
     }
 

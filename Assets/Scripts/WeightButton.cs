@@ -19,7 +19,7 @@ public class WeightButton : MonoBehaviour
         if (container.isFull() && !related_closet.isMoveable())
         {
             related_closet.setStatus(true); // move the closet
-            
+
             sound.Play();
         }
     }
@@ -27,7 +27,7 @@ public class WeightButton : MonoBehaviour
     void Update()
     {
         // if the container is already on the button, check if new weight comes
-        if(container != null && !related_closet.isMoveable())
+        if (container != null && !related_closet.isMoveable())
         {
             if (container.isFull())
             {

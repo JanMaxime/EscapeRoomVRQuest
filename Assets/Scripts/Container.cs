@@ -23,12 +23,15 @@ public class Container : MonoBehaviour
     /// <summary>
     /// Updates the text with the current number of weights
     /// </summary>
-    void updateText(){
+    void updateText()
+    {
         text.text = currentWeights + "/" + totalWeights + " ton";
-        if(isFull()){
+        if (isFull())
+        {
             text.color = complete_color;
         }
-        else{
+        else
+        {
             text.color = incomplete_color;
         }
     }
@@ -36,15 +39,18 @@ public class Container : MonoBehaviour
     /// <summary>
     /// At the start of the game, update the text with the current number of weights (zero)
     /// </summary>
-    void Start(){
+    void Start()
+    {
         updateText();
     }
 
     /// <summary>
     /// When an object enters the container, the number of weights is increased by one if it is indeed a weight
     /// </summary>
-    void OnTriggerEnter(Collider other){
-        if (other.tag == "weight"){
+    void OnTriggerEnter(Collider other)
+    {
+        if (other.tag == "weight")
+        {
             other.transform.parent = this.transform;
             currentWeights += 1;
             updateText();
@@ -54,8 +60,10 @@ public class Container : MonoBehaviour
     /// <summary>
     /// When an object exits the container, the number of weights is decreased by one if it is indeed a weight
     /// </summary>
-    void OnTriggerExit(Collider other){
-        if (other.tag == "weight"){
+    void OnTriggerExit(Collider other)
+    {
+        if (other.tag == "weight")
+        {
             other.transform.parent = weights_initial_parent;
             currentWeights -= 1;
             updateText();
@@ -65,7 +73,8 @@ public class Container : MonoBehaviour
     /// Checks whether the container is full or not
     /// </summary>
     /// <returns>true when the container is full, false otherwise</returns>
-    public bool isFull(){
+    public bool isFull()
+    {
         return currentWeights >= totalWeights;
     }
 }

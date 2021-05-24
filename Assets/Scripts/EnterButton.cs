@@ -20,7 +20,7 @@ public class EnterButton : MonoBehaviour
         bool right = (hand_controller.handType == HandController.HandType.RightHand);
         StartCoroutine(VibrationManager.vibrate(right, 0.1f, 1f, 1f));
 
-        if(screen_text.text != correct_pw)
+        if (screen_text.text != correct_pw)
         {
             //wrong pw!
             wrong_sound.Play();

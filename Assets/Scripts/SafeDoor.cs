@@ -5,7 +5,7 @@ using UnityEngine;
 public class SafeDoor : ContainerBeHacked
 {
     public bool locked = true; // all safe are locked initially
-    protected float max_y; 
+    protected float max_y;
 
     void Start()
     {

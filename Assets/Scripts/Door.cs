@@ -10,12 +10,12 @@ public class Door : MonoBehaviour
     protected float avaliable_degree_to_open = 100f;
 
     protected float velocity;
-    
+
     // Update is called once per frame
     void Update()
     {
         if (correspond_lock.is_locked == false)
-        { 
+        {
             can_be_opened = true; // can be open only if corresponding lock is unlocked
         }
     }

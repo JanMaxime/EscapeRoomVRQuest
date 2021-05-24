@@ -34,7 +34,7 @@ public class Teleportation : MonoBehaviour
         return OVRInput.Get(OVRInput.RawButton.A);
     }
 
-    
+
     /// <summary>
     /// Checks whether the button to activate the tp is pushed
     /// </summary>
@@ -89,7 +89,7 @@ public class Teleportation : MonoBehaviour
             rigidbody.useGravity = true;
             rigidbody.isKinematic = false;
             //Conversion from local coordinates to world coordinates and multiply by a speed factor
-            rigidbody.velocity = trackingSpace.rotation * OVRInput.GetLocalControllerVelocity(OVRInput.Controller.RTouch) * 1.5f;
+            rigidbody.velocity = trackingSpace.rotation * OVRInput.GetLocalControllerVelocity(OVRInput.Controller.RTouch) * 2.2f;
             teleportation_sphere_instantiated.transform.eulerAngles = new Vector3(0, teleportation_sphere_instantiated.transform.eulerAngles.y, 0);
             sphere_thrown = true;
         }

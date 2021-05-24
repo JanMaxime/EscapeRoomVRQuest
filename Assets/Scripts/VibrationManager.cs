@@ -5,8 +5,8 @@ using UnityEngine;
 public static class VibrationManager
 {
 
-   private static bool right_vibrating = false;
-   private static bool left_vibrating = false;
+    private static bool right_vibrating = false;
+    private static bool left_vibrating = false;
 
     /// <summary>
     /// Coroutine to vibrate the controllers
@@ -16,30 +16,36 @@ public static class VibrationManager
     /// <param name="frequency">The vibration frequency</param>
     /// <param name="amplitude">The vibration amplitude</param>
     /// <returns></returns>
-    public static IEnumerator vibrate(bool right, float time, float frequency, float amplitude){
+    public static IEnumerator vibrate(bool right, float time, float frequency, float amplitude)
+    {
 
         //Sets the current vibrating state of the controllers
-        if((!left_vibrating && !right) || (!right_vibrating && right)){
-            if(right){
+        if ((!left_vibrating && !right) || (!right_vibrating && right))
+        {
+            if (right)
+            {
                 right_vibrating = true;
             }
-            else{
+            else
+            {
                 left_vibrating = true;
             }
-            OVRInput.Controller controller = right ? OVRInput.Controller.RTouch :  OVRInput.Controller.LTouch;
+            OVRInput.Controller controller = right ? OVRInput.Controller.RTouch : OVRInput.Controller.LTouch;
 
             //Starts the vibrations
-            OVRInput.SetControllerVibration(frequency,amplitude,controller);
+            OVRInput.SetControllerVibration(frequency, amplitude, controller);
             //Wait
             yield return new WaitForSeconds(time);
             //Ends the vibrations
-            OVRInput.SetControllerVibration(0,0,controller);
+            OVRInput.SetControllerVibration(0, 0, controller);
 
             //Sets the current vibrating state of the controllers
-            if(right){
+            if (right)
+            {
                 right_vibrating = false;
             }
-            else{
+            else
+            {
                 left_vibrating = false;
             }
         }

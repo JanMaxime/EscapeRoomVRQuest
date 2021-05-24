@@ -34,7 +34,8 @@ public class Timer : MonoBehaviour
     void Update()
     {
         // there is still time but the door is not open, keep countdown
-        if (remaining_time > 0 && !final_door.isOpen()) {
+        if (remaining_time > 0 && !final_door.isOpen())
+        {
             timer += Time.deltaTime;
             if (timer >= 1f)
             {
