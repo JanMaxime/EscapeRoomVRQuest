@@ -16,6 +16,7 @@ public class ScreenTextChangeScript : MonoBehaviour
     public GameObject cubeObject;
     public GameObject glassObject;
     public GameObject lightsaber;
+    public Canvas timerCanvas;
 
     protected Text screenText;
     protected AudioSource audioComp;
@@ -27,13 +28,14 @@ public class ScreenTextChangeScript : MonoBehaviour
         "Hmmm, finally awake I see? ",
         "Rejoice!",
         "You have been personally chosen by I, the brilliant professor Moriatz to become a superior mind of this world!",
+        "But I must be sure of your potential before raising you to the next stage! ",
         "Resolve the puzzles, get out of the basement and you will be ensured a promising future.",
-        "But don’t you dare waste my time or you will stay here forever. ",
+        "Don’t you dare waste my time or you will stay here forever. ",
         "Hurry up, the clock is already ticking?",
         //6
         "Humpf, attracted by light like a mosquito. You can’t even see in the dark, what a disappointment.",
         //7
-        "Maybe you have some potential in the end. You just turned on the light, but the door is still closed. You will never find the key?the way out I mean.",
+        "Maybe you have some potential in the end. You just turned on the light, but the door is still closed. You will never find the key... the way out I mean.",
         //8
         "Not too shabby?But this was too easy, let’s see how you do in the next room.",
         //9
@@ -53,6 +55,7 @@ public class ScreenTextChangeScript : MonoBehaviour
         screenText = screen.transform.GetChild(0).transform.GetChild(0).GetComponent<Text>();
         screenText.text = dialogueArray[dialogueNum];
         audioComp = screen.GetComponent<AudioSource>();
+        timerCanvas.enabled = false;
 
         //play the audio and screen 3 sec after awake
         audioComp.PlayDelayed(3.0f);
@@ -64,18 +67,20 @@ public class ScreenTextChangeScript : MonoBehaviour
     void Update()
     {
         //plays the next dialogue of the introduction
-        if (dialogueNum < 5)
+        if (intro)
         {
-            if (intro & !audioComp.isPlaying)
+            if ((dialogueNum < 6) & !audioComp.isPlaying)
             {
                 dialogueNum += 1;
                 ChangeAudio(dialogueNum);
             }
-        }
-        else
-        {
-            //when introduction is finished
-            intro = false;
+            else if (!audioComp.isPlaying)
+            {
+                //when introduction is finished
+                intro = false;
+                Activation();
+                timerCanvas.enabled = true;
+            }
         }
 
         //voiceslines trigger
@@ -124,14 +129,17 @@ public class ScreenTextChangeScript : MonoBehaviour
     // on/off for the tv screen
     public void Activation()
     {
-        if (screen.GetComponent<Renderer>().material.IsKeywordEnabled("_EMISSION"))
+        if (screen.GetComponent<Renderer>().enabled)
         {
-            screen.GetComponent<Renderer>().material.DisableKeyword("_EMISSION");
+            screen.GetComponent<Renderer>().enabled = false;
+           // screen.GetComponent<Renderer>().material.DisableKeyword("_EMISSION");
             screenText.gameObject.SetActive(false);
         }
         else
         {
-            screen.GetComponent<Renderer>().material.EnableKeyword("_EMISSION");
+
+            screen.GetComponent<Renderer>().enabled = true;
+            //screen.GetComponent<Renderer>().material.EnableKeyword("_EMISSION");
             screenText.gameObject.SetActive(true);
         }
     }
