@@ -29,9 +29,10 @@ public class ChangeTutorialTextScript : MonoBehaviour
     //text for each mission
     private string[] missionTextArray = { 
         //1
-        "Mission:\n\nMove near the lamp.\n- Press button A and throw the ball.\n" +
-            "- Press button B to teleport to the ball or button C to cancel.\n\n\n\n"+
-            "Press X to show/hide the mission window.",
+        "Mission:\n\nMove near the lamp.\n- Hold button A and throw the palet by releasing the button.\n" +
+            "- Rotate the direction of the palet with the left thumbstick\n" +
+            "- Press button X to teleport to the palet or button B to cancel.\n\n\n\n"+
+            "Press a thumbstick to show/hide the mission window.",
         //2
         "Mission:\n\nIt is too dark to see anything, find a way to light up the main light.\nThere must be a hint somewhere...\n" +
             "- Grab the clipboard on the drawer by pushing the D button.",
@@ -121,15 +122,15 @@ public class ChangeTutorialTextScript : MonoBehaviour
     private void LateUpdate()
     {
 
-        if (OVRInput.GetDown(OVRInput.RawButton.X))
+        if (OVRInput.GetUp(OVRInput.Button.PrimaryThumbstick))
         {
-            if (txt.gameObject.activeSelf)
+            if (txt.enabled)
             {
-                txt.gameObject.SetActive(false);
+                txt.enabled = false;
             }
             else
             {
-                txt.gameObject.SetActive(true);
+                txt.enabled = true;
             }
         }
     }
