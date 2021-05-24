@@ -11,7 +11,7 @@ public class LightSwitch : ObjectAnchor
     private Vector3 last_position; // store last position of the hand controller
     private Transform trans;
 
-    private float avaliable_rotation_to_on;// set the rotation range to 60f
+    private float avaliable_rotation_to_on;// set the rotation range to 70f
 
     void Start()
     {
@@ -29,14 +29,14 @@ public class LightSwitch : ObjectAnchor
     // Update is called once per frame
     protected void Update()
     {
-
+        // if the switch is held by a hand
         if (this.hand_controller != null)
         {
-            //check if the hand controller is far away from the switch, detach
+            //check, if the hand controller is far away from the switch, detach
             if (Vector3.Distance(this.hand_controller.transform.position, trans.position) > this.graspingRadius * 2)
             {
                 this.detach_from(this.hand_controller);
-                //Debug.LogWarning("detached!!!");
+                last_position = trans.position;
                 return;
             }
 
@@ -48,7 +48,7 @@ public class LightSwitch : ObjectAnchor
                 //try to turn off
                 if(diff < 0)
                 {
-                    to_update = Mathf.Min(70f - avaliable_rotation_to_on, Mathf.Abs(5f * diff));
+                    to_update = Mathf.Min(70f - avaliable_rotation_to_on, Mathf.Abs(5f * diff)); // the switch can only rotate within a range
                     avaliable_rotation_to_on = avaliable_rotation_to_on + to_update;
                     to_update = to_update * -1f;
                     if(avaliable_rotation_to_on == 70f)
@@ -57,7 +57,7 @@ public class LightSwitch : ObjectAnchor
                         this.is_on = false;
                     }
                 }
-                else
+                else // turn on
                 {
                     to_update = Mathf.Min(avaliable_rotation_to_on, 5f * diff);
                     avaliable_rotation_to_on = avaliable_rotation_to_on - to_update;
@@ -75,7 +75,7 @@ public class LightSwitch : ObjectAnchor
 
     public override void attach_to(HandController hand_controller)
     {
-        // Store the hand controller in memory
+        // Store the hand controller in memory but the position of the switch will not change with the hand
         this.hand_controller = hand_controller;
     }
 
