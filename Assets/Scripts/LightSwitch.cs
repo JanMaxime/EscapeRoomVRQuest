@@ -16,6 +16,7 @@ public class LightSwitch : ObjectAnchor
     void Start()
     {
         trans = gameObject.GetComponent<Transform>();
+        last_position = trans.position;
         if (is_on)
         {
             avaliable_rotation_to_on = 0f; // corresponding rotation to off state is 70f
@@ -69,7 +70,6 @@ public class LightSwitch : ObjectAnchor
                 }
                 trans.Rotate(new Vector3(0f, to_update, 0f));
             }
-            last_position = this.hand_controller.transform.position;
         }
     }
 
