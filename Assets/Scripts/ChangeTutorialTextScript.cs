@@ -34,7 +34,8 @@ public class ChangeTutorialTextScript : MonoBehaviour
             "Press the left thumbstick to show/hide\nthe mission window.",
         //2
         "Mission:\n\nIt is too dark to see anything, find a way\nto turn on the main light.\nThere must be a hint somewhere...\n\n" +
-            "- Grab the clipboard on the drawer by pushing\nthe index trigger.",
+            "- All small objects can be grabbed with the index triggers\n"+
+            "- Grab the clipboard on the drawer for a clue",
         //3
         "Mission:\n\nThis must be a hint to light up\nthe lights.\n\n" +
             "- Find the right switches to activate. ",
