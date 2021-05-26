@@ -90,10 +90,10 @@ public class ChangeTutorialTextScript : MonoBehaviour
         {
             NextMission();
         }//4 if he turns on the light
-        else if (missionNumber == 3 && lightMaterial.IsKeywordEnabled("_EMISSION"))
+        else if (missionNumber <= 3 && lightMaterial.IsKeywordEnabled("_EMISSION"))
         {
             screenController.GetComponent<ScreenTextChangeScript>().ChangeAudio(8);
-            NextMission();
+            NextMission(3);
         }//5 if he is near the safe
         else if (missionNumber == 4 && NearObject(safe))
         {
@@ -107,10 +107,10 @@ public class ChangeTutorialTextScript : MonoBehaviour
         {
             NextMission(6);
         }//8 if he goes to the next room
-        else if (missionNumber == 7 && characterController.transform.position[2] > 0.5)
+        else if (missionNumber <= 7 && characterController.transform.position[2] > 0.5)
         {
             screenController.GetComponent<ScreenTextChangeScript>().ChangeAudio(9);
-            NextMission();
+            NextMission(7);
         }
     }
 
