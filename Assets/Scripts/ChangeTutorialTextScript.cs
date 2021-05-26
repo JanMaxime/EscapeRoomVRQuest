@@ -31,7 +31,7 @@ public class ChangeTutorialTextScript : MonoBehaviour
         "Mission:\n\nMove near the lamp.\n\n- Hold button A and throw the palet\nby releasing the button.\n" +
             "- Rotate the direction of the palet\nwith the left thumbstick\n" +
             "- Press button X to teleport to the palet\nor button B to cancel.\n\n\n\n"+
-            "Press a thumbstick to show/hide\nthe mission window.",
+            "Press the left thumbstick to show/hide\nthe mission window.",
         //2
         "Mission:\n\nIt is too dark to see anything, find a way\nto turn on the main light.\nThere must be a hint somewhere...\n\n" +
             "- Grab the clipboard on the drawer by pushing\nthe index trigger.",
@@ -44,7 +44,7 @@ public class ChangeTutorialTextScript : MonoBehaviour
         "Mission:\n\nThis safe might contain the key,\nfind a way to open it.\n\n"+
             "- The password must be hidden\nsomewhere in the room.",
         //6
-        "Mission:\n\nThis number written on the book has to be\nthe clue you were searching.\n\n"+
+        "Mission:\n\nThis number written on the book has to be\nthe password. Go open the safe.\n\n"+
             "- Press Y to open/close the notepad\nto take a memo\n"+
             "- Hold B while writing the code on it\nwith the right controller",
         //7
@@ -57,8 +57,7 @@ public class ChangeTutorialTextScript : MonoBehaviour
     void Start()
     {
         //Gets the differents GameComponents from the scene
-        txt = gameObject.transform.GetChild(2).GetComponent<Text>();
-        tutorialScreen = gameObject.transform.GetChild(1).gameObject;
+        txt = gameObject.transform.GetChild(0).GetComponent<Text>();
         missionClearSound = gameObject.GetComponent<AudioSource>();
         clipboardPos = puzzle1Clipboard.transform.position[1];
         bookPos = book.transform.position[1];
@@ -68,16 +67,16 @@ public class ChangeTutorialTextScript : MonoBehaviour
         txt.text = missionTextArray[0];
         missionNumber = 1;
         //desactivate the display until end of intro
-        this.gameObject.transform.GetChild(2).gameObject.SetActive(false);
+        this.gameObject.transform.GetChild(0).gameObject.SetActive(false);
     }
 
     // Update is called once per frame
     void Update()
     {
         //Activates the mission window if the intro is finished
-        if (!this.gameObject.transform.GetChild(2).gameObject.activeSelf && !screenController.GetComponent<ScreenTextChangeScript>().GetIntroStatus())
+        if (!this.gameObject.transform.GetChild(0).gameObject.activeSelf && !screenController.GetComponent<ScreenTextChangeScript>().GetIntroStatus())
         {
-            this.gameObject.transform.GetChild(2).gameObject.SetActive(true);
+            this.gameObject.transform.GetChild(0).gameObject.SetActive(true);
         }
 
         //Go to next mission if the conditions for the current mission is fullfilled
@@ -85,8 +84,6 @@ public class ChangeTutorialTextScript : MonoBehaviour
         if (missionNumber == 1 && characterController.transform.position[2] < -6.2)
         {
             screenController.GetComponent<ScreenTextChangeScript>().ChangeAudio(7);
-            //disactivates the tutorial video
-            tutorialScreen.SetActive(false);
             NextMission();
         }//3 if he grabs the clipboard
         else if (missionNumber == 2 && !puzzle1Clipboard.GetComponent<Rigidbody>().useGravity)
@@ -102,13 +99,13 @@ public class ChangeTutorialTextScript : MonoBehaviour
         {
             NextMission();
         }//6 if he grabs the book that hides the code
-        else if (missionNumber == 5 && !book.GetComponent<Rigidbody>().useGravity)
+        else if ((missionNumber == 4 | missionNumber==5) && !book.GetComponent<Rigidbody>().useGravity)
         {
-            NextMission();
+            NextMission(5);
         }//7 if he opens the safe
-        else if (missionNumber == 6 && !control_door.locked)
+        else if ((missionNumber <= 6 | missionNumber == 5) && !control_door.locked)
         {
-            NextMission();
+            NextMission(6);
         }//8 if he goes to the next room
         else if (missionNumber == 7 && characterController.transform.position[2] > 0.5)
         {
@@ -135,13 +132,25 @@ public class ChangeTutorialTextScript : MonoBehaviour
     }
 
     //activates the mission window and displays the next mission
-    public void NextMission()
+    public void NextMission(int i=-1)
     {
-        txt.gameObject.SetActive(true);
-        //Plays clear sound and changes of the next mission 
-        txt.text = missionTextArray[missionNumber];
-        missionClearSound.Play();
-        missionNumber += 1;
+        if (i>0)
+        {
+            txt.gameObject.SetActive(true);
+            //Plays clear sound and changes of the next mission 
+            txt.text = missionTextArray[i];
+            missionClearSound.Play();
+            missionNumber = i+1;
+        }
+        else
+        {
+            txt.gameObject.SetActive(true);
+            //Plays clear sound and changes of the next mission 
+            txt.text = missionTextArray[missionNumber];
+            missionClearSound.Play();
+            missionNumber += 1;
+
+        }
     }
 
     //calculate the distance between the player and an object

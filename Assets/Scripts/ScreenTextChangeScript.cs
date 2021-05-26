@@ -17,6 +17,7 @@ public class ScreenTextChangeScript : MonoBehaviour
     public GameObject glassObject;
     public GameObject lightsaber;
     public Canvas timerCanvas;
+    public GameObject screen2;
 
     protected Text screenText;
     protected AudioSource audioComp;
@@ -121,9 +122,19 @@ public class ScreenTextChangeScript : MonoBehaviour
     //change audio of dialogue
     public void ChangeAudio(int num)
     {
-        NextDialogue(num);
-        audioComp.clip = audioList[num];
-        audioComp.PlayDelayed(1f);
+        if (num>9)
+        {
+            NextDialogue(num);
+            screen2.GetComponent<AudioSource>().clip = audioList[num];
+            screen2.GetComponent<AudioSource>().PlayDelayed(1f);
+        }
+        else
+        {
+            NextDialogue(num);
+            audioComp.clip = audioList[num];
+            audioComp.PlayDelayed(1f);
+
+        }
     }
 
     // on/off for the tv screen
